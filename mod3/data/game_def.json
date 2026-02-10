@@ -1,0 +1,63 @@
+[
+  {
+    "id": 209,
+    "name": "DOTA",
+    "description": "Un buen juego.",
+    "minutes": 0,
+    "completion": 0,
+    "categories": [
+      5,
+      21,
+      29
+    ]
+  },
+  {
+    "id": 658,
+    "name": "Kungfu",
+    "description": "Juego clasico de patadas",
+    "minutes": 0,
+    "completion": 0,
+    "categories": [
+      17,
+      28
+    ]
+  },
+  {
+    "id": 219,
+    "name": "Mario Bros",
+    "description": "Juego de Saltitos",
+    "minutes": 0,
+    "completion": 0,
+    "categories": [
+      12,
+      17,
+      28
+    ]
+  },
+  {
+    "id": 747,
+    "name": "Supermetroid",
+    "description": "Clasico entre clasicos.",
+    "minutes": 0,
+    "completion": 0,
+    "categories": [
+      13,
+      17,
+      19,
+      26
+    ]
+  },
+  {
+    "id": 327,
+    "name": "The King Of Fighters",
+    "description": "Juego de peleas PRO",
+    "minutes": 0,
+    "completion": 0,
+    "categories": [
+      6,
+      27,
+      28,
+      29
+    ]
+  }
+]
