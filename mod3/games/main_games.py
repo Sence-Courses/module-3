@@ -41,7 +41,7 @@ def add_game_screen():
       """)
       name = input('Ingrese nombre del juego: ')
       
-      if name == '':
+      if not name:
         print('Debe ingresar el nombre del juego.')
         input('Presione una tecla para continuar..')
         continue
@@ -49,7 +49,7 @@ def add_game_screen():
       name = name.title()
       description = input('Ingrese descripcion del juego: ')
 
-      cat_list = get_categories()
+      cat_list = get_categories()[1:]
       cat_names = [c['name'] for c in cat_list]
       print('\nCategorias: ', *cat_names, '\n', sep=' | ')      
       categorias = input('Ingrese categorias (separadas por espacio): ')
@@ -96,7 +96,7 @@ def del_game_screen():
           
       game_id = input('\nIngrese id del juego: ')
 
-      if game_id == '' or not game_id.isdigit():
+      if not game_id or not game_id.isdigit():
         print('Debe ingresar id de juego valido.')
         input('Presione una tecla para continuar..')
         continue

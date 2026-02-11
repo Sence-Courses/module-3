@@ -28,6 +28,10 @@ def filter_col(key, key_value, datalist):
   iter = filter(lambda c: c[key] != key_value, datalist)
   return list(iter)
 
+def get_list_by_match(key, key_value, datalist):
+  iter = filter(lambda e: key_value in e[key], datalist)
+  return list(iter)
+
 def order_json(datalist, keys):
   """
   Ordena una lista correspondiente a la data de un archivo JSON.
