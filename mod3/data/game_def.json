@@ -1,10 +1,10 @@
 [
   {
     "id": 209,
-    "name": "DOTA",
+    "name": "Dota",
     "description": "Un buen juego.",
-    "minutes": 0,
-    "completion": 0,
+    "minutes": 100,
+    "completion": 7,
     "categories": [
       5,
       21,
@@ -12,10 +12,22 @@
     ]
   },
   {
+    "id": 677,
+    "name": "Doom",
+    "description": "El shooter clasico.",
+    "minutes": 0,
+    "completion": 0,
+    "categories": [
+      2,
+      18,
+      30
+    ]
+  },
+  {
     "id": 658,
     "name": "Kungfu",
     "description": "Juego clasico de patadas",
-    "minutes": 0,
+    "minutes": 10,
     "completion": 0,
     "categories": [
       17,
@@ -26,8 +38,8 @@
     "id": 219,
     "name": "Mario Bros",
     "description": "Juego de Saltitos",
-    "minutes": 0,
-    "completion": 0,
+    "minutes": 60,
+    "completion": 17,
     "categories": [
       12,
       17,
@@ -38,8 +50,8 @@
     "id": 747,
     "name": "Supermetroid",
     "description": "Clasico entre clasicos.",
-    "minutes": 0,
-    "completion": 0,
+    "minutes": 78,
+    "completion": 3,
     "categories": [
       13,
       17,
@@ -51,8 +63,8 @@
     "id": 327,
     "name": "The King Of Fighters",
     "description": "Juego de peleas PRO",
-    "minutes": 0,
-    "completion": 0,
+    "minutes": 180,
+    "completion": 10,
     "categories": [
       6,
       27,

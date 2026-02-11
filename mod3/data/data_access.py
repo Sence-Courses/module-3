@@ -1,5 +1,5 @@
 import json
-from util.utils import order_json, filter_col, find_element
+from util.utils import order_json, filter_col, find_element, get_list_by_match
 from util.enums import OrderKeys
 import time
 
@@ -28,6 +28,32 @@ def get_game_by_id(game_id):
   coll_id = 'game_def'
   games = read_json(coll_id)
   return find_element('id', game_id, games)
+
+def get_gamelist_by_name(name):
+  """
+  Obtiene una lista de juegos a partir de un nombre.
+  Args:
+    name (str): Nombre o fragmento del nombre del juego.
+  Returns:
+    list: Retorna una lista de juegos o una lista vacia.
+  """
+  coll_id = 'game_def'
+  key = 'name'
+  games = read_json(coll_id)
+  return get_list_by_match(key, name, games)
+
+def get_gamelist_by_category(category):
+  """
+  Retorna una lista de juegos a partir de su categoria.
+  Args:
+    category (int): Id de la categoria a buscar.
+  Returns:
+    list: Retorna una lista de juegos o una lista vacia.
+  """
+  coll_id = 'game_def'
+  key = 'categories'
+  games = read_json(coll_id)
+  return get_list_by_match(key, category, games)
 
 def del_game(game_id):
   """
@@ -59,7 +85,23 @@ def get_categories():
   """
   col_id = 'categories'
   categories = read_json(col_id)
-  return categories[1:]
+  return categories
+
+def get_name_categories_by_id(cat_ids):
+  """
+  Retorna una lista de nombres de categorias a partir de ids.
+  """
+  key = 'categories'
+  categories = get_categories()
+  filtered_categories = list(filter(lambda c: c['id'] in cat_ids, categories))
+  cat_names = list(map(lambda c: c['name'], filtered_categories))
+  return cat_names
+
+def get_category_by_name(category):
+  col_id = 'categories'
+  key = 'name'
+  categories = read_json(col_id)
+  return get_list_by_match(key, category.lower(), categories)
 
 def write_json(col_name, json_data):
   """
