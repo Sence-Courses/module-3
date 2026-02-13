@@ -29,10 +29,19 @@ def filter_col(key, key_value, datalist):
   return list(iter)
 
 def get_list_by_match(key, key_value, datalist):
+  """
+  Retorna una lista filtrada por el campo seleccionado.
+  Args:
+    key (string): Campo a comparar.
+    key_value (any): Valor del campo a comparar.
+    datalist (list): Lista a la que se le aplicara el filtro.
+  Returns:
+    list: Lista filtrada por el campo y el valor ingresados.
+  """
   iter = filter(lambda e: key_value in e[key], datalist)
   return list(iter)
 
-def order_json(datalist, keys):
+def order_datalist(datalist, keys, reverse=False):
   """
   Ordena una lista correspondiente a la data de un archivo JSON.
   Args:
@@ -41,7 +50,7 @@ def order_json(datalist, keys):
   Returns:
     list(any): Lista ordenada a partir de las llaves ingresadas.
   """
-  return sorted(datalist, key=lambda x: set_keys(x, keys))
+  return sorted(datalist, key=lambda x: set_keys(x, keys), reverse=reverse)
 
 def set_keys(x, keys):
   """
@@ -64,6 +73,17 @@ def generate_game_id():
     int: id generado aleatoriamente.
   """
   return random.randint(1, game_id_range + 1);
+
+def get_formatted_time(minutes):
+  """
+  Retorna un mensaje con la hora a partir de los minutos ingresados.
+  Args:
+    minutes (int): Valor que indica los minutos.
+  Returns:
+    str: Mensaje que retorna hoas y minutos a partir de los minutos ingresados.
+  """
+  hours, minutes = divmod(minutes, 60)
+  return f'{hours} horas y {minutes} minutos.'
 
 def clear_screen():
   """ Limpia la pantalla de la consola. """

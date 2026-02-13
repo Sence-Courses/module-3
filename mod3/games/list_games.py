@@ -1,7 +1,13 @@
 from util.menu import list_games_menu
 from util.validator import validateInput
-from data.data_access import get_categories, get_category_by_name, get_gamelist_by_name, get_gamelist_by_category, get_name_categories_by_id
-from util.utils import clear_screen
+from data.data_access import (
+  get_categories, 
+  get_category_by_name, 
+  get_gamelist_by_name, 
+  get_gamelist_by_category, 
+  get_name_categories_by_id,
+  get_ordered_gamelist)
+from util.utils import clear_screen, get_formatted_time
 import os, time
 
 def menu_game_list():
@@ -24,12 +30,10 @@ def menu_game_list():
           find_by_category()
           continue
         case '4':
-          print('Listar por horas jugadas')
-          input()
+          list_by_hours()
           continue
         case '5':
-          print('Listar por % completado')
-          input()
+          list_by_completion()
           continue
         case '6':
           print('Volver al menu anterior')
@@ -116,6 +120,88 @@ def find_by_category():
         print('Categorias: ',*cat_names)
       
       input('\nPresione una tecla para continuar...')
+  except KeyboardInterrupt:
+    print("\nVolviendo la menu anterior.")
+    time.sleep(1.5)
+
+def list_by_hours():
+  try:
+    while True:
+      clear_screen()
+      n_opt = 2
+      print(
+      """
+      ############################# 
+      # LISTADO POR HORAS JUGADAS #
+      #############################
+      Presione Ctrl+C para salir.
+      """)
+      order = input("""
+      1. Orden ascendente.
+      2. Orden descendente.
+      """)
+
+      if validateInput(order, n_opt):
+        game_list = []
+        origin = 'by_hours'
+
+        match (order):
+          case '1':
+            game_list = get_ordered_gamelist(origin, False)
+          case '2':
+            game_list = get_ordered_gamelist(origin, True)
+
+        for g in game_list:
+          print(f'\nJuego: {g['name']}')
+          print(f'Descripcion: {g['description']}')
+          cat_names = get_name_categories_by_id(g['categories'])
+          print('Categorias: ', *cat_names)
+          print(f'Horas jugadas: {get_formatted_time(g['minutes'])}')
+
+        input('\nPresione una tecla para continuar...')
+      else:
+        input('Presione una tecla para continuar.')
+  except KeyboardInterrupt:
+    print("\nVolviendo la menu anterior.")
+    time.sleep(1.5)
+
+def list_by_completion():
+  try:
+    while True:
+      clear_screen()
+      n_opt = 2
+      print(
+      """
+      ########################## 
+      #   LISTADO POR AVANCE   #
+      ##########################
+      Presione Ctrl+C para salir.
+      """)
+      order = input("""
+      1. Orden ascendente.
+      2. Orden descendente.
+      """)
+
+      if validateInput(order, n_opt):
+        game_list = []
+        origin = 'by_compl'
+
+        match (order):
+          case '1':
+            game_list = get_ordered_gamelist(origin, False)
+          case '2':
+            game_list = get_ordered_gamelist(origin, True)
+
+        for g in game_list:
+          print(f'\nJuego: {g['name']}')
+          print(f'Descripcion: {g['description']}')
+          cat_names = get_name_categories_by_id(g['categories'])
+          print('Categorias: ', *cat_names)
+          print(f'completion completado: {g['completion']}%')
+
+        input('\nPresione una tecla para continuar...')
+      else:
+        input('Presione una tecla para continuar.')
   except KeyboardInterrupt:
     print("\nVolviendo la menu anterior.")
     time.sleep(1.5)
