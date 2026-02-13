@@ -1,5 +1,5 @@
 import json
-from util.utils import order_json, filter_col, find_element, get_list_by_match
+from util.utils import order_datalist, filter_col, find_element, get_list_by_match
 from util.enums import OrderKeys
 import time
 
@@ -41,6 +41,27 @@ def get_gamelist_by_name(name):
   key = 'name'
   games = read_json(coll_id)
   return get_list_by_match(key, name, games)
+
+def get_ordered_gamelist(origin, reverse):
+  """
+  Retorna una lista de juegos ordenada a partir de las opciones ingresadas.
+  Args:
+    origin (str): Indicador para identificar los campos a ordenar.
+    reverse (bool): Indica si el orden sera ascendente o descendente.
+  Returns:
+    list: Retorna la lista de juegos ordenada por los campos solicitados.
+  """
+  coll_id = 'game_def'
+  game_list = read_json(coll_id)
+
+  match (origin):
+    case 'by_hours':
+      game_list = order_datalist(
+        game_list, OrderKeys['game_hrs'].value, reverse)
+    case 'by_compl':
+      game_list = order_datalist(
+        game_list, OrderKeys['game_cmp'].value, reverse)
+  return game_list;
 
 def get_gamelist_by_category(category):
   """
@@ -113,7 +134,7 @@ def write_json(col_name, json_data):
   try:
     filename = default_path + col_name + '.json'
     with open(filename, 'w') as json_file:
-      json.dump(order_json(json_data, OrderKeys[col_name].value), json_file, indent=2)
+      json.dump(order_datalist(json_data, OrderKeys[col_name].value), json_file, indent=2)
   except IOError as e:
     print(f"Error al guardar la data: {e}")
   except TypeError as e:

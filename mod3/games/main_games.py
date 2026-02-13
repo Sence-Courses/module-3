@@ -1,8 +1,16 @@
 from games.list_games import menu_game_list
 from util.menu import game_menu
 from util.validator import validateInput
-from util.utils import clear_screen, generate_game_id, find_element
-from data.data_access import add_game, del_game, get_game_by_id, get_categories, get_games
+from util.utils import (
+  clear_screen, 
+  generate_game_id, 
+  find_element)
+from data.data_access import (
+  add_game, 
+  del_game, 
+  get_game_by_id, 
+  get_categories, 
+  get_games)
 import time
 
 def menu_games():
