@@ -1,3 +1,4 @@
+import time
 from util.menu import list_games_menu
 from util.validator import validateInput
 from data.data_access import (
@@ -8,7 +9,6 @@ from data.data_access import (
   get_name_categories_by_id,
   get_ordered_gamelist)
 from util.utils import clear_screen, get_formatted_time
-import os, time
 
 def menu_game_list():
   while True:
