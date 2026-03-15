@@ -1,9 +1,9 @@
-import json
+import json, os
+from datetime import datetime
 from util.utils import order_datalist, filter_col, find_element, get_list_by_match
 from util.enums import OrderKeys
-import time
 
-default_path = 'mod3/data/'
+default_path = os.path.join('mod3', 'data')
 
 def add_game(game):
   """
@@ -15,6 +15,7 @@ def add_game(game):
   games = read_json(coll_id)
   games.append(game)
   write_json(coll_id, games)
+  register_history('add', game)
   input(f'\nEl juego {game["name"]} se ha agregado.\nPresione una tecla para continuar.')
 
 def get_game_by_id(game_id):
@@ -87,6 +88,7 @@ def del_game(game_id):
   game = get_game_by_id(game_id)
   games = filter_col('id', game_id, games)
   write_json(coll_id, games)
+  register_history('del', game)
   input(f'\nEl juego {game["name"]} ha sido eliminado.\nPresione una tecla para continuar.')
 
 def get_games():
@@ -124,6 +126,31 @@ def get_category_by_name(category):
   categories = read_json(col_id)
   return get_list_by_match(key, category.lower(), categories)
 
+def register_history(category, element):
+  col_id = 'game_historial'
+  historial = read_json(col_id)
+  register = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+  if category == 'add':
+    register += ' ADD: '
+  elif category == 'del':
+    register += ' DEL: '
+  else:
+    pass
+  
+  register += f'{element}'
+  historial.append(register)
+  write_json(col_id, historial)
+
+def get_game_history():
+  """
+  Retorna el historial de modificaciones hechas al listado de juegos.
+  Returns:
+    tuple: Tupla que contiene los registros del historial.
+  """
+  coll_id = 'game_historial'
+  return tuple(read_json(coll_id))
+
 def write_json(col_name, json_data):
   """
   Graba el contenido de una lista en un archivo JSON.
@@ -132,7 +159,7 @@ def write_json(col_name, json_data):
     json_data (list): Lista que contiene los datos a guardar.
   """
   try:
-    filename = default_path + col_name + '.json'
+    filename = os.path.join(default_path, f'{col_name}.json')
     with open(filename, 'w') as json_file:
       json.dump(order_datalist(json_data, OrderKeys[col_name].value), json_file, indent=2)
   except IOError as e:
@@ -148,7 +175,7 @@ def read_json(col_name):
   Returns:
     list: Lista que contiene el contenido de un archivo JSON.
   """
-  filename = default_path + col_name + '.json'
+  filename = os.path.join(default_path, f'{col_name}.json')
   try:
     with open(filename, 'r') as json_file:
       return json.load(json_file)
@@ -156,3 +183,13 @@ def read_json(col_name):
     print(f"Error: Archivo '{json_file}' no encontrado.")
   except json.JSONDecodeError:
     print("Error: Error al decodificar el archivo JSON. Revise la sintaxis del archivo.")
+
+def create_json(col_name):
+  try:
+    filename = os.path.join(default_path, f'{col_name}.json')
+    with open(filename, 'x') as json_file:
+      json.dump([], json_file, indent=2)
+  except IOError as e:
+    print(f"Error al guardar la data: {e}")
+  except TypeError as e:
+    print(f"Error al serializar la data: {e}")

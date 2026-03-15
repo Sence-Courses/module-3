@@ -8,5 +8,6 @@ OrderKeys = Enum('OrderKeys', [
   ('game_cat', ['category']),
   ('game_hrs', ['minutes', 'name']),
   ('game_cmp', ['completion', 'name']),
-  ('cat_def', ['name', 'id'])
+  ('cat_def', ['name', 'id']),
+  ('game_historial', []),
 ])

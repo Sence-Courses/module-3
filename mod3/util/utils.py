@@ -80,7 +80,7 @@ def get_formatted_time(minutes):
   Args:
     minutes (int): Valor que indica los minutos.
   Returns:
-    str: Mensaje que retorna hoas y minutos a partir de los minutos ingresados.
+    str: Mensaje que retorna horas y minutos a partir de los minutos ingresados.
   """
   hours, minutes = divmod(minutes, 60)
   return f'{hours} horas y {minutes} minutos.'

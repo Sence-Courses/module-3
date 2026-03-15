@@ -4,6 +4,7 @@ from history.main_history import menu_history
 from util.menu import main_menu
 from util.validator import validateInput
 from util.utils import clear_screen
+from data.data_access import create_json
 
 def main():
   while True:
@@ -34,4 +35,6 @@ def main():
         input('Presione una tecla para continuar.')
 
 if __name__ == "__main__":
+  create_json('game_def')
+  create_json('game_historial')
   main()

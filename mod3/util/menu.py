@@ -4,7 +4,7 @@ main_menu = """
 ##############################
 # 1. Administrar juegos      #
 # X. Administrar colecciones #
-# X. Historial               #
+# 3. Historial               #
 # X. Simular juego           #
 # 5. Salir                   #  
 ##############################
@@ -49,7 +49,7 @@ coleccion_menu = """
 history_menu = """
 ###############################
 # HISTORIAL DE MODIFICACIONES #
-# X. Historial de juegos      #
+# 1. Historial de juegos      #
 # X. Historial de colecciones #
 # 3. Volver al menu principal #
 ###############################
