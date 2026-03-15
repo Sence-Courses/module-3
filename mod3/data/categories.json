@@ -1,0 +1,126 @@
+[
+  {
+    "id": 0,
+    "name": "uncategorized"
+  },
+  {
+    "id": 1,
+    "name": "fantasy"
+  },
+  {
+    "id": 2,
+    "name": "horror"
+  },
+  {
+    "id": 3,
+    "name": "sci-fi"
+  },
+  {
+    "id": 4,
+    "name": "survival"
+  },
+  {
+    "id": 5,
+    "name": "sports"
+  },
+  {
+    "id": 6,
+    "name": "tactical"
+  },
+  {
+    "id": 7,
+    "name": "cyberpunk"
+  },
+  {
+    "id": 8,
+    "name": "puzzle"
+  },
+  {
+    "id": 9,
+    "name": "mechs"
+  },
+  {
+    "id": 10,
+    "name": "indie"
+  },
+  {
+    "id": 11,
+    "name": "action"
+  },
+  {
+    "id": 12,
+    "name": "casual"
+  },
+  {
+    "id": 13,
+    "name": "adventure"
+  },
+  {
+    "id": 14,
+    "name": "rpg"
+  },
+  {
+    "id": 15,
+    "name": "strategy"
+  },
+  {
+    "id": 16,
+    "name": "hack-n-slash"
+  },
+  {
+    "id": 17,
+    "name": "arcade"
+  },
+  {
+    "id": 18,
+    "name": "shooter"
+  },
+  {
+    "id": 19,
+    "name": "platformer"
+  },
+  {
+    "id": 20,
+    "name": "roguelike"
+  },
+  {
+    "id": 21,
+    "name": "arpg"
+  },
+  {
+    "id": 22,
+    "name": "jrpg"
+  },
+  {
+    "id": 23,
+    "name": "rts"
+  },
+  {
+    "id": 24,
+    "name": "bullet-hell"
+  },
+  {
+    "id": 25,
+    "name": "souls-like"
+  },
+  {
+    "id": 26,
+    "name": "metroidvania"
+  },
+  {
+    "id": 27,
+    "name": "fighting"
+  },
+  {
+    "id": 28,
+    "name": "singleplayer"
+  },
+  {
+    "id": 29,
+    "name": "multiplayer"
+  },
+  {
+    "id": 30,
+    "name": "difficult"
+  }
+]
